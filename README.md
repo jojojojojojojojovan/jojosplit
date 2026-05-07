@@ -5,11 +5,11 @@ If not found: install docker desktop (https://www.docker.com/products/docker-des
 VSCODE Ctrl+Shift+X: Install SQLTools + SQLTools PostgreSQL Driver
 
 CMD: 
-docker run --name jojosplit-db \
-  -e POSTGRES_DB=jojosplit \
-  -e POSTGRES_USER=admin \
-  -e POSTGRES_PASSWORD=secret \
-  -p 5432:5432 \
+docker run --name jojosplit-db \\
+  -e POSTGRES_DB=jojosplit \\
+  -e POSTGRES_USER=admin \\
+  -e POSTGRES_PASSWORD=secret \\
+  -p 5432:5432 \\
   -d postgres:16
 
 Verify if it is running
