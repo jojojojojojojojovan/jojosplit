@@ -6,7 +6,7 @@
 
 #### US 1a (2P)
 
-As a user, I want to be able to create a group and add group members upon creation so that I can keep track of the group's expense.
+As a group owner, I want to be able to create a group and add group members upon creation so that I can keep track of the group's expense.
 POST/groups/create
 {groupname:
 created at:
@@ -14,19 +14,15 @@ groupmember:[]}
 
 #### US 1b (1P)
 
-As a user, I want to be able to view and enter all the groups I am currently in so that I can ...
+As a user, I want to be able to view all groups and enter into the group page so that I know which group I am in and see my expenses in that group
 GET/groups/{userid}
 
 ## In group management page
 
-#### US 2a (1P)
+#### US 2a (3P)
 
-As a user, I want to be able to view all members of an existing groups so that I know who is part of the group.
+As a user, I want to be able to manage an existing group so that I know who is part of the group and add/remove members
 /GET/groupmembers/{groupid}
-
-#### US 2b (2P)
-
-As a user, I want to be able to add and remove members from existing groups so that the members in the group are correctly reflected.
 /PUT/groupmembers/{groupid}
 {groupmember: []}
 
@@ -58,21 +54,11 @@ As a user, I want to be able to add expenses to the group so that expenses spent
   - Add to transaction table
 
 #### US 3b (2P)
-As a user, I want to see transactions within a group
+As a user, I want to filter and see the transactions made within a group so that I can choose to see how much I paid, borrowed, who I owe/who owes me and all transactions within the group
 /GET/transaction/{groupid}
-
-#### US 3c (2P)
-
-As a user, I want to see transactions within a group that involves me
 /GET/transaction/{groupid}/{userid}
 
 - Separate tabs/filters to show transactions which I have paid or borrowed
-
-
-
-#### US 3d (3P)
-As a user, I want see how much I have paid and borrowed
-/GET/transaction/{groupid}{userid}
 
 #### US 3e (4P)
 As a user, I want see how much each party should pay and to whom (Simplified payment)
@@ -80,7 +66,7 @@ As a user, I want see how much each party should pay and to whom (Simplified pay
 - ALOT OF backend logic
 
 #### US 3f (1P)
-Aa a user, I want to be able to settle amount that I owe
+As a user, I want to be able to settle amount that I owe
   /POST/transaction/{groupid}
   {transaction_name: ,
    transactionmember: [{member:,
