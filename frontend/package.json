@@ -1,15 +1,14 @@
 {
-  "name": "client",
+  "name": "jojosplit-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
-    "copy-static": "node ./copy-build-to-static.js",
-    "build:static": "npm run build && npm run copy-static",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "dependencies": {
     "react": "^19.2.6",
