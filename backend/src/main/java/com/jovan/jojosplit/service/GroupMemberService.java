@@ -32,6 +32,13 @@ public class GroupMemberService {
                 .orElseThrow(() -> new RuntimeException("GroupMember not found with id: " + id));
     }
 
+    public List<Group> getGroupsByUserId(Long userId) {
+    return groupMemberRepository.findByUserId(userId)
+            .stream()
+            .map(GroupMember::getGroup)
+            .toList();
+    }
+
     public GroupMember addMemberToGroup(Long groupId, Long userId) {
         Group group = groupService.getGroupById(groupId);
         User user = userService.getUserById(userId);
