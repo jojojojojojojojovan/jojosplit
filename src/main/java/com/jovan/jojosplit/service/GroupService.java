@@ -24,6 +24,7 @@ public class GroupService {
                 .orElseThrow(() -> new RuntimeException("Group not found with id: " + id));
     }
 
+    
     public Group createGroup(Group group) {
         return groupRepository.save(group);
     }
