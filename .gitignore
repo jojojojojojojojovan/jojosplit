@@ -1,1 +1,54 @@
-bin
+# ==========================================
+# Global / System / Editor
+# ==========================================
+**/.vscode/
+**/.idea/
+
+*.log
+*.tmp
+*.temp
+
+Thumbs.db
+.DS_Store
+
+# ==========================================
+# Root generated folders
+# ==========================================
+/bin/
+
+# ==========================================
+# Frontend - React / Vite
+# ==========================================
+/frontend/node_modules/
+/frontend/dist/
+/frontend/build/
+/frontend/.vite/
+/frontend/.cache/
+
+/frontend/.env
+/frontend/.env.*
+
+# ==========================================
+# Backend - Spring Boot / Gradle
+# ==========================================
+/backend/.gradle/
+/backend/build/
+/backend/bin/
+/backend/out/
+/backend/target/
+
+/backend/.classpath
+/backend/.project
+/backend/.settings/
+/backend/.factorypath
+/backend/.apt_generated/
+/backend/.springBeans
+/backend/.sts4-cache/
+
+/backend/.env
+/backend/.env.*
+
+/backend/HELP.md
+
+# Keep Gradle wrapper
+!/backend/gradle/wrapper/gradle-wrapper.jar
