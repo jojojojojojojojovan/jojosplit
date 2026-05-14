@@ -13,7 +13,7 @@ public class User{
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String email;
 
     // Getters and Setters
