@@ -1,13 +1,14 @@
 package com.jovan.jojosplit.service;
 
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.jovan.jojosplit.entity.GroupMember;
 import com.jovan.jojosplit.entity.Transaction;
 import com.jovan.jojosplit.entity.TransactionMember;
 import com.jovan.jojosplit.repository.TransactionMemberRepository;
-import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 @Service
 public class TransactionMemberService {
@@ -34,7 +35,7 @@ public class TransactionMemberService {
     }
 
     public TransactionMember addTransactionMember(Long transactionId, Long memberId,
-                                                   BigDecimal amount, TransactionMember.Role role) {
+                                                   BigDecimal amount) {
         Transaction transaction = transactionService.getTransactionById(transactionId);
         GroupMember member = groupMemberService.getGroupMemberById(memberId);
 
@@ -42,7 +43,6 @@ public class TransactionMemberService {
         transactionMember.setTransaction(transaction);
         transactionMember.setMember(member);
         transactionMember.setAmount(amount);
-        transactionMember.setRole(role);
 
         return transactionMemberRepository.save(transactionMember);
     }
