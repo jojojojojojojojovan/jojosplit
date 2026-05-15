@@ -84,7 +84,7 @@ function HomePage() {
     )
   }
 
-  // 1. Populated List State -> Show modern dashboard with group ID and Name
+  // Populated List State -> Show modern dashboard with group ID and Name
   return (
     <div className="container dashboard-layout">
       <header className="dashboard-header">
@@ -98,7 +98,12 @@ function HomePage() {
 
       <div className="groups-grid">
         {groups.map((group) => (
-          <div key={group.id} className="group-card">
+          <div 
+            key={group.id} 
+            className="group-card"
+            onClick={() => navigate(`/group/${group.id}`)} // <-- 1. Trigger redirect on click
+            style={{ cursor: "pointer" }}                  // <-- 2. Make it physically look clickable
+          >
             <h2 className="group-name" style={{ marginTop: 0 }}>
               {group.name}
             </h2>
