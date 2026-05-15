@@ -50,6 +50,37 @@ public class GroupMemberService {
         return groupMemberRepository.save(groupMember);
     }
 
+    public Group createGroupWithMembers(String name, List<String> memberNames) {
+        Group group = new Group();
+        group.setName(name);
+        Group savedGroup = groupService.createGroup(group);
+
+        if (memberNames != null) {
+            for (String memberName : memberNames) {
+                if (memberName == null) {
+                    continue;
+                }
+
+                String trimmedName = memberName.trim();
+                if (trimmedName.isEmpty()) {
+                    continue;
+                }
+
+                User user = new User();
+                user.setName(trimmedName);
+                user.setEmail(null);
+                User savedUser = userService.createUser(user);
+
+                GroupMember groupMember = new GroupMember();
+                groupMember.setGroup(savedGroup);
+                groupMember.setUser(savedUser);
+                groupMemberRepository.save(groupMember);
+            }
+        }
+
+        return savedGroup;
+    }
+
     public void removeMemberFromGroup(Long id) {
         groupMemberRepository.deleteById(id);
     }
