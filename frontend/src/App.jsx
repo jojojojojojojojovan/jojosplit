@@ -1,14 +1,15 @@
 import "./App.css"
+import { Routes, Route } from "react-router-dom"
+
+import HomePage from "./pages/HomePage"
+import CreateGroupPage from "./pages/CreateGroupPage"
 
 function App() {
   return (
-    <div className="container">
-      <h1>Welcome to JojoSplit</h1>
-      <p>Start by creating a group to share expenses and build your workflow from here.</p>
-      <button className="button-primary" type="button">
-        Create group
-      </button>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/create-group" element={<CreateGroupPage />} />
+    </Routes>
   )
 }
 
