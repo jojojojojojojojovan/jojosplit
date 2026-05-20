@@ -15,6 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/groups")
+@CrossOrigin(origins = "http://localhost:5173")
 public class GroupController {
     
     private final GroupMemberService groupMemberService;
