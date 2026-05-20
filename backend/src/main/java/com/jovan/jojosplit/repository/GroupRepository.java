@@ -7,4 +7,5 @@ import com.jovan.jojosplit.entity.Group;
 
 @Repository
 public interface GroupRepository extends JpaRepository<Group, Long> {
+  
 }
