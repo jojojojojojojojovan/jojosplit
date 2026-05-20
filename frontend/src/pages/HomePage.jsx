@@ -3,28 +3,43 @@ import { useNavigate } from "react-router-dom"
 
 function HomePage() {
   const navigate = useNavigate()
-  
+
   // 1. State Management
   const [groups, setGroups] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [userId, setUserId] = useState(null)
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true)
 
-  // 3. Hardcoded temporary user ID
-  const userId = 1
-
-  // Fetch data on mount
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    const storedUserId = localStorage.getItem("userId")
+    setUserId("9") //Temp for testing
+
+    // ~~~~MAKE USE OF TOKEN FOR AUTHENTICATION~~~~
+    // if (!token || !storedUserId) {
+    //   navigate("/login")
+    //   return
+    // }
+    // setUserId(Number(storedUserId))
+    // setIsCheckingAuth(false)
+  }, [navigate])
+
+  // Fetch data when user ID is available
+  useEffect(() => {
+    if (!userId) return
+
     const fetchGroups = async () => {
       try {
         setIsLoading(true)
         setError(null)
-        
+
         const response = await fetch(`http://localhost:8080/api/groups/${userId}`)
-        
+
         if (!response.ok) {
           throw new Error(`Server responded with status: ${response.status}`)
         }
-        
+
         const data = await response.json()
         setGroups(data)
       } catch (err) {
@@ -47,7 +62,7 @@ function HomePage() {
           <div className="skeleton-btn"></div>
         </header>
         <div className="groups-grid">
-          {[1, 2, 3].map((n) => (
+          {[1, 2, 3].map(n => (
             <div key={n} className="group-card skeleton-pulse">
               <div className="skeleton-badge"></div>
               <div className="skeleton-text"></div>
@@ -97,19 +112,17 @@ function HomePage() {
       </header>
 
       <div className="groups-grid">
-        {groups.map((group) => (
-          <div 
-            key={group.id} 
+        {groups.map(group => (
+          <div
+            key={group.id}
             className="group-card"
             onClick={() => navigate(`/group/${group.id}`)} // <-- 1. Trigger redirect on click
-            style={{ cursor: "pointer" }}                  // <-- 2. Make it physically look clickable
+            style={{ cursor: "pointer" }} // <-- 2. Make it physically look clickable
           >
             <h2 className="group-name" style={{ marginTop: 0 }}>
               {group.name}
             </h2>
-            <div className="group-meta">
-              Created: {new Date(group.createdAt).toLocaleDateString()}
-            </div>
+            <div className="group-meta">Created: {new Date(group.createdAt).toLocaleDateString()}</div>
           </div>
         ))}
       </div>

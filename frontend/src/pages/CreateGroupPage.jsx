@@ -44,6 +44,7 @@ function CreateGroupPage() {
 
       await response.json()
       setSuccessMessage("Group created successfully!")
+      console.log("Group created:", payload)
       setErrorMessage("")
       setGroupName("")
       setMembers([""])
