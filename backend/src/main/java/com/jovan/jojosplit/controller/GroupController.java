@@ -12,7 +12,6 @@ import com.jovan.jojosplit.entity.Group;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/groups")
 @CrossOrigin(origins = "http://localhost:5173")
